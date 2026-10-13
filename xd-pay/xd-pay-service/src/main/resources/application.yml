@@ -1,0 +1,34 @@
+server:
+  port: 8087  #端口
+  tomcat:
+    uri-encoding: UTF-8   #服务编码
+  error:
+    include-message: always #返回的响应体带上message
+spring:
+  profiles:
+    active: local
+  application:
+    name: pay-service
+xd:
+  swagger:
+    enable: true
+    enableResponseWrap: true
+    package-path: com.xiaodu.pay.controller
+    title: 小杜课堂 - 支付中心接口文档
+    description: 该服务提供微信、支付宝等各种平台的支付、退款等功能
+    contact-name: 小杜有限教育
+    version: v1.0
+  jdbc:
+    database: xd-pay
+  pay:
+    notifyHost: https://6b9f16dd.r2.cpolar.top/ps
+    ali:
+      appId: ${ALI_PAY_APP_ID}
+      merchantPrivateKey: ${ALI_PAY_MERCHANT_PRIVATE_KEY}
+      publicKey: ${ALI_PAY_PUBLIC_KEY}
+    wx:
+      appId: ${WX_PAY_APP_ID}
+      mchId: ${WX_PAY_MCH_ID}
+      mchSerialNo: ${WX_PAY_MCH_SERIAL_NO}
+      privateKey: ${WX_PAY_PRIVATE_KEY}
+      apiV3Key: ${WX_PAY_API_V3_KEY}

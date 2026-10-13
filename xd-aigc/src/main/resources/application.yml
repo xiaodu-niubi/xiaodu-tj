@@ -1,0 +1,55 @@
+server:
+  port: 8094  #端口
+  tomcat:
+    uri-encoding: UTF-8   #服务编码
+spring:
+  profiles:
+    active: local
+  application:
+    name: aigc-service
+  main:
+    allow-circular-references: true # 允许循环引用
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration
+      - org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration
+xd:
+  swagger:
+    enable: true
+    package-path: com.xiaodu.aigc.controller
+    title: 小杜课堂 - AIGC接口文档
+    description: 该服务包含AI相关功能
+    contact-name: 小杜有限教育
+    version: v1.0
+    enableResponseWrap: true
+  auth:
+    resource:
+      enable: true
+  jdbc:
+    database: xd-aigc #指定使用的数据库名
+  ai:
+    prompt:
+      system:
+        chat:
+          data-id: system-chat-message.txt
+          group: DEFAULT_GROUP
+          timeout-ms: 20000
+        route-agent:
+          data-id: route-agent-system-message.txt #路由提示词
+        recommend-agent:
+          data-id: recommend-agent-system-message.txt #推荐提示词
+        buy-agent:
+          data-id: buy-agent-system-message.txt #购买提示词
+        text:
+          data-id: text-system-chat-message.txt #文本对话提示词
+    memory:
+      max: 100
+      type: Redis #对话记忆存储方式，Redis / MYSQL / MongoDB
+    chat-type: ENHANCE # ROUTE / ENHANCE / APP
+    audio-type: DASHSCOPE # OPENAI / DASHSCOPE
+  ali:
+    oss:
+      endpoint: oss-cn-hangzhou.aliyuncs.com
+      access-id: ${OSS_ACCESSKEY_ID}
+      access-key: ${OSS_ACCESSKEY_SECRET}
+      bucket: web-xiaodu

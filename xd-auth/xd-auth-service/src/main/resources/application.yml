@@ -1,0 +1,40 @@
+server:
+  port: 8081  #端口
+  tomcat:
+    uri-encoding: UTF-8   #服务编码
+spring:
+  profiles:
+    active: local
+  application:
+    name: auth-service
+encrypt:
+  key-store:
+    alias: tjxt  #别名
+    location: classpath:xdxt.jks  #KeyStore 证书库名称
+    password: ${JKS_KEYSTORE_PASSWORD}   #证书库密码
+    secret: ${JKS_KEY_SECRET}   #秘钥
+xd:
+  swagger:
+    enable: true
+    enableResponseWrap: true
+    package-path: com.xiaodu.auth.controller
+    title: 小杜课堂 - 权限微服务接口文档
+    description: 该服务用于管理权限相关信息
+    contact-name: 小杜有限教育
+    version: v1.0
+  auth:
+    resource:
+      enable: true
+      includeLoginPaths:
+        - /menus/me
+        - /accounts/logout
+  jdbc:
+    database: xd-auth
+
+# 阿里云OSS配置
+aliyun:
+  oss:
+    endpoint: oss-cn-hangzhou.aliyuncs.com
+    access-id: ${OSS_ACCESSKEY_ID}
+    access-key: ${OSS_ACCESSKEY_SECRET}
+    bucket: web-xiaodu

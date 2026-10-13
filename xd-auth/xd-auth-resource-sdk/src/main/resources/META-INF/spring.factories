@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.xiaodu.authsdk.resource.config.ResourceInterceptorConfiguration, \
+  com.xiaodu.authsdk.resource.config.FeignRelayUserAutoConfiguration

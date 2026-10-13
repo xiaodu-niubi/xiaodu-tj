@@ -1,0 +1,34 @@
+server:
+  port: 8085  #端口
+  tomcat:
+    uri-encoding: UTF-8   #服务编码
+spring:
+  profiles:
+    active: local
+  application:
+    name: message-service
+xd:
+  swagger:
+    enable: true
+    enableResponseWrap: true
+    package-path: com.xiaodu.message.controller
+    title: 小杜课堂 - 消息中心接口文档
+    description: 该服务用于站内信、通知管理、短信发送等功能
+    contact-name: 小杜有限教育
+    version: v1.0
+  auth:
+    resource:
+      enable: true
+      excludeLoginPaths:
+        - /students/register
+        - /users/detail/{isStaff}
+        - /users/list
+        - GET:/users/{id}
+        - /users/{id}/type
+        - /users/ids
+  jdbc:
+    database: xd-message
+  sms:
+    ali:
+      accessId: ${OSS_ACCESSKEY_ID}
+      accessSecret: ${OSS_ACCESSKEY_SECRET}

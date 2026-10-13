@@ -1,0 +1,25 @@
+server:
+  port: 8090  #端口
+  tomcat:
+    uri-encoding: UTF-8   #服务编码
+spring:
+  profiles:
+    active: local
+  application:
+    name: learning-service
+xd:
+  swagger:
+    enable: true
+    enableResponseWrap: true
+    package-path: com.xiaodu.learning.controller
+    title: 小杜课堂 - 学习中心接口文档
+    description: 该服务包含用户学习的各种辅助功能
+    contact-name: 小杜有限教育
+    version: v1.0
+  jdbc:
+    database: xd-learning
+  auth:
+    resource:
+      enable: false
+  ai:
+    user-id: 9999

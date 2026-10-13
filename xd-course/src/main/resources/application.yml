@@ -1,0 +1,25 @@
+server:
+  port: 8086  #端口
+  tomcat:
+    uri-encoding: UTF-8   #服务编码
+spring:
+  profiles:
+    active: local
+  application:
+    name: course-service
+  main:
+    allow-circular-references: true
+xd:
+  swagger:
+    enable: true
+    package-path: com.xiaodu.course.controller
+    title: 小杜课堂 - 课程系统接口文档
+    description: 该服务包含课程管理相关功能
+    contact-name: 小杜有限教育
+    version: v1.0
+    enableResponseWrap: true
+  auth:
+    resource:
+      enable: false
+  jdbc:
+    database: xd-course

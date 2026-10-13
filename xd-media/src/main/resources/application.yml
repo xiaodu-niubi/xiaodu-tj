@@ -1,0 +1,52 @@
+server:
+  port: 8084  #端口
+  tomcat:
+    uri-encoding: UTF-8   #服务编码
+spring:
+  profiles:
+    active: local
+  application:
+    name: media-service
+xd:
+  swagger:
+    enable: true
+    package-path: com.xiaodu.media.controller
+    title: 小杜学堂 - 媒资中心接口文档
+    description: 该服务包含图片管理、媒资管理等
+    contact-name: 小杜有限教育
+    version: v1.0
+    enableResponseWrap: true
+  auth:
+    resource:
+      enable: true
+      excludeLoginPaths:
+        - /medias/signature/play
+  jdbc:
+    database: xd-media
+  platform:
+    file: TENCENT
+#    file: ALI
+    media: TENCENT
+  ali:
+    accessId: "*******"
+    accessKey: "*******"
+    oss:
+      endpoint: "*******"
+      bucket: "*******"
+  tencent:
+    appId: ${xd.tencent.appId}
+    secretId: ${xd.tencent.secretId}
+    secretKey: ${xd.tencent.secretKey}
+    vod:
+      enable: true
+      vodValidSeconds: 7776000
+      region: "ap-shanghai"
+      procedure: "wisehub-base"
+      urlKey: ${TENCENT_VOD_URL_KEY}
+      pfcg: "basicDrmPreset"
+    cos:
+      enable: true
+      region: "ap-nanjing"
+      bucket: xiaodu
+      multipartUploadThreshold: 5242880 # 5mb，触发分片上传的阈值
+      minimumUploadPartSize: 1048576 # 1mb，分片的最小大小
